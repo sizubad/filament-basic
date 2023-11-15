@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Brand;
 use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Database\Migrations\Migration;
@@ -16,6 +17,7 @@ return new class extends Migration
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Kategori::class);
+            $table->foreignIdFor(Brand::class);
             $table->string('nama');
             $table->string('deskripsi');
             $table->string('gambar');

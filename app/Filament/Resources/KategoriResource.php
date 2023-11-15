@@ -19,7 +19,7 @@ class KategoriResource extends Resource
 {
     protected static ?string $model = Kategori::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
 
     public static function form(Form $form): Form
     {
@@ -61,7 +61,7 @@ class KategoriResource extends Resource
     {
         return [
             'index' => Pages\ListKategoris::route('/'),
-            //'create' => Pages\CreateKategori::route('/create'),
+            'create' => Pages\CreateKategori::route('/create'),
             //'edit' => Pages\EditKategori::route('/{record}/edit'),
         ];
     }    

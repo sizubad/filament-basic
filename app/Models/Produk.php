@@ -9,10 +9,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Produk extends Model
 {
     use HasFactory;
-    protected $fillable = ['kategori_id', 'nama', 'deskripsi', 'gambar', 'ukuran','harga','stok'];
+    protected $fillable = ['kategori_id','brand_id', 'nama', 'deskripsi', 'gambar', 'ukuran','harga','stok'];
 
     public function kategori(): BelongsTo
     {
         return $this->belongsTo(Kategori::class);
+    }
+
+    
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 }

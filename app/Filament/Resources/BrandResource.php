@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AuthorResource\Pages;
-use App\Filament\Resources\AuthorResource\RelationManagers;
-use App\Models\Author;
+use App\Filament\Resources\BrandResource\Pages;
+use App\Filament\Resources\BrandResource\RelationManagers;
+use App\Models\Brand;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,17 +15,17 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AuthorResource extends Resource
+class BrandResource extends Resource
 {
-    protected static ?string $model = Author::class;
+    protected static ?string $model = Brand::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-star';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required()
+                TextInput::make('brand')->required()
             ]);
     }
 
@@ -33,7 +33,7 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('brand')
             ])
             ->filters([
                 //
@@ -59,9 +59,9 @@ class AuthorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAuthors::route('/'),
-            //'create' => Pages\CreateAuthor::route('/create'),
-            //'edit' => Pages\EditAuthor::route('/{record}/edit'),
+            'index' => Pages\ListBrands::route('/'),
+            'create' => Pages\CreateBrand::route('/create'),
+            //'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }    
 }

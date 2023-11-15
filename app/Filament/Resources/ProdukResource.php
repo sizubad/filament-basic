@@ -24,7 +24,7 @@ class ProdukResource extends Resource
 {
     protected static ?string $model = Produk::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     public static function form(Form $form): Form
     {
@@ -33,6 +33,9 @@ class ProdukResource extends Resource
                 Select::make('kategori_id')
                 ->required()
                 ->relationship('kategori', 'nama'),
+                Select::make('brand_id')
+                ->required()
+                ->relationship('brand', 'brand'),
                 TextInput::make('nama')->required(),
                 Textarea::make('deskripsi')->required(),
                 FileUpload::make('gambar')->required(),
@@ -52,7 +55,9 @@ class ProdukResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('kategori.nama'),
+                TextColumn::make('kategori.nama')
+                ->searchable(),
+                TextColumn::make('brand.brand'),
                 TextColumn::make('nama'),
                 TextColumn::make('deskripsi'),
                 ImageColumn::make('gambar'),
@@ -85,7 +90,7 @@ class ProdukResource extends Resource
     {
         return [
             'index' => Pages\ListProduks::route('/'),
-            //'create' => Pages\CreateProduk::route('/create'),
+            'create' => Pages\CreateProduk::route('/create'),
             //'edit' => Pages\EditProduk::route('/{record}/edit'),
         ];
     }    
